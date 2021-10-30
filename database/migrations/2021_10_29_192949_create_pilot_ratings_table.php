@@ -15,6 +15,8 @@ class CreatePilotRatingsTable extends Migration
     {
         Schema::create('pilot_ratings', function (Blueprint $table) {
             $table->id();
+            $table->string('RATING');
+            $table->foreignId('airplane_id')->constrained();
             $table->timestamps();
         });
     }
