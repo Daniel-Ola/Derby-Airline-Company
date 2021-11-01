@@ -14,7 +14,8 @@ class PilotRatingFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'rating' => $this->faker->numberBetween(0, 5),
+            'airplane_id' => $this->faker->numberBetween(1, 100)
         ];
     }
 }

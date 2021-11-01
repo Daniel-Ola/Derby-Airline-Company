@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class IntermediateCityFactory extends Factory
@@ -14,7 +15,10 @@ class IntermediateCityFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'flightnum' => 'DERFLY' . 999,
+            'city' => $this->faker->city,
+            'arr_time' => Carbon::now(),
+            'dep_time' => Carbon::now()
         ];
     }
 }

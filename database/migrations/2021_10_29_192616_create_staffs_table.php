@@ -15,12 +15,12 @@ class CreateStaffsTable extends Migration
     {
         Schema::create('staffs', function (Blueprint $table) {
             $table->id();
-            $table->string('EMPNUM')->index();
+            $table->string('EMPNUM')->index();//->unique();
             $table->string('SURNAME');
             $table->string('NAME');
             $table->text('ADDRESS');
             $table->string('PHONE');
-            $table->decimal('SALARY');
+            $table->string('SALARY');
             $table->unsignedBigInteger('STAFF_ROLE_ID');
             $table->foreign('STAFF_ROLE_ID')->references('ID')->on('staff_roles');
             $table->softDeletes();

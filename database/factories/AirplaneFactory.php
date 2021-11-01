@@ -14,7 +14,9 @@ class AirplaneFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'numser' => $this->faker->numberBetween(99999, 999999),
+            'manufacturer' => $this->faker->firstName,
+            'model_number' => $this->faker->numberBetween(99, 999)
         ];
     }
 }

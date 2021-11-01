@@ -15,7 +15,7 @@ class CreateFlightsTable extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
-            $table->string('FLIGHTNUM')->index();
+            $table->string('FLIGHTNUM')->index();//->unique();
             $table->string('ORIGIN');
             $table->string('DEST');
             $table->foreignId('airplane_id')->constrained();

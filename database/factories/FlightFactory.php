@@ -14,7 +14,11 @@ class FlightFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'flightnum' => 'DERFLY' . 999,
+            'origin' => $this->faker->city,
+            'dest' => $this->faker->city,
+            'airplane_id' => $this->faker->numberBetween(1, 100),
+            'pilot_id' => $this->faker->numberBetween(1, 100)
         ];
     }
 }

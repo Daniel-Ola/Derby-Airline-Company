@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PilotRating;
 use Illuminate\Database\Seeder;
 
 class PilotRatingSeeder extends Seeder
@@ -13,6 +14,6 @@ class PilotRatingSeeder extends Seeder
      */
     public function run()
     {
-        //
+        PilotRating::factory()->count(3)->create();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\IntermediateCity;
 use Illuminate\Database\Seeder;
 
 class IntermediateCitySeeder extends Seeder
@@ -13,6 +14,6 @@ class IntermediateCitySeeder extends Seeder
      */
     public function run()
     {
-        //
+        IntermediateCity::factory()->count(100)->create();
     }
 }

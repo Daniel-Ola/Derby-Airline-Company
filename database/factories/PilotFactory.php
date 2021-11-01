@@ -14,7 +14,8 @@ class PilotFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'empnum' => 'EMP' . 999,
+            'pilot_rating_id' => $this->faker->numberBetween(1, 3)
         ];
     }
 }
