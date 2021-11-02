@@ -15,9 +15,9 @@ class CreateAirplanesTable extends Migration
     {
         Schema::create('airplanes', function (Blueprint $table) {
             $table->id();
-            $table->string('NUMSER')->comment('Serial Number not manufacturer + model number');
-            $table->string('MANUFACTURER');
-            $table->string('MODEL_NUMBER');
+            $table->string('numser')->comment('Serial Number not manufacturer + model number');
+            $table->string('manufacturer');
+            $table->string('model_number');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -15,8 +15,8 @@ class CreatePilotsTable extends Migration
     {
         Schema::create('pilots', function (Blueprint $table) {
             $table->id();
-            $table->string('EMPNUM');
-            $table->foreign('EMPNUM')->references('EMPNUM')->on('staffs');
+            $table->string('empnum');
+            $table->foreign('empnum')->references('empnum')->on('staffs');
             $table->foreignId('pilot_rating_id')->constrained();
             $table->softDeletes();
             $table->timestamps();

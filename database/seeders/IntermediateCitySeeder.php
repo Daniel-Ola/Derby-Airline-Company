@@ -14,6 +14,6 @@ class IntermediateCitySeeder extends Seeder
      */
     public function run()
     {
-        IntermediateCity::factory()->count(100)->create();
+        IntermediateCity::factory()->count(1)->create();
     }
 }

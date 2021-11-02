@@ -15,11 +15,11 @@ class CreateIntermediateCitiesTable extends Migration
     {
         Schema::create('intermediate_cities', function (Blueprint $table) {
             $table->id();
-            $table->string('FLIGHTNUM');
-            $table->foreign('FLIGHTNUM')->references('FLIGHTNUM')->on('flights');
-            $table->string('CITY');
-            $table->timestamp('ARR_TIME')->useCurrent();
-            $table->timestamp('DEP_TIME')->useCurrent();
+            $table->string('flightnum');
+            $table->foreign('flightnum')->references('flightnum')->on('flights');
+            $table->string('city');
+            $table->timestamp('arr_time')->useCurrent();
+            $table->timestamp('dep_time')->useCurrent();
             $table->softDeletes();
             $table->timestamps();
         });

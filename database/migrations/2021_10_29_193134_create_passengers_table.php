@@ -15,13 +15,13 @@ class CreatePassengersTable extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->id();
-            $table->string('SURNAME');
-            $table->string('NAME');
-            $table->text('ADDRESS');
-            $table->string('PHONE');
-            $table->timestamp('DATE');
-            $table->string('FLIGHTNUM');
-            $table->foreign('FLIGHTNUM')->references('FLIGHTNUM')->on('flights');
+            $table->string('surname');
+            $table->string('name');
+            $table->text('address');
+            $table->string('phone');
+            $table->timestamp('date');
+            $table->string('flightnum');
+            $table->foreign('flightnum')->references('flightnum')->on('flights');
             $table->softDeletes();
             $table->timestamps();
         });
