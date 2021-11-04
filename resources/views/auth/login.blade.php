@@ -78,7 +78,10 @@
                     password: password,
                     remember_me: rememberMe
                 }).then(res => {
-                    location.href = '/'
+                    let data = res.data.data;
+                    if (data.success && data.redirect) {
+                        location.href = data.redirectTo;
+                    }
                 }).catch(err => {
                     cash('#btn-login').html('Login')
                     if (err.response.data.message != 'Wrong email or password.') {

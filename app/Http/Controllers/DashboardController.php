@@ -13,6 +13,8 @@ class DashboardController extends Controller
 
         $month = Carbon::now()->month;
         $flightThisMonth = Flight::whereMonth('created_at', '=', $month)->get();
+        $activePassengers = 1;
+        dd($activePassengers);
 
         return view('pages/dashboard', [
             'staff_count' => Staff::count(),
