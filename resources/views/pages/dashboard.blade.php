@@ -21,13 +21,13 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-feather="shopping-cart" class="report-box__icon text-theme-24 dark:text-theme-25"></i>
+                                        <i data-feather="navigation" class="report-box__icon text-theme-24 dark:text-theme-25"></i>
                                         <div class="ml-auto">
-                                            <div class="report-box__indicator bg-theme-20 tooltip cursor-pointer" title="33% Higher than last month"> 33% <i data-feather="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
+                                            <div class="report-box__indicator bg-theme-20 tooltip cursor-pointer" title="<?php echo $flights->count() ?> flight(s) this month"> <?php echo $flights->count() ?> <i data-feather="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                         </div>
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">4.710</div>
-                                    <div class="text-base text-gray-600 mt-1">Item Sales</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6"><?php echo $flights->count() ?></div>
+                                    <div class="text-base text-gray-600 mt-1">Flights</div>
                                 </div>
                             </div>
                         </div>
@@ -35,13 +35,13 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-feather="credit-card" class="report-box__icon text-theme-29"></i>
-                                        <div class="ml-auto">
-                                            <div class="report-box__indicator bg-theme-21 tooltip cursor-pointer" title="2% Lower than last month"> 2% <i data-feather="chevron-down" class="w-4 h-4 ml-0.5"></i> </div>
-                                        </div>
+                                        <i data-feather="user-check" class="report-box__icon text-theme-29"></i>
+{{--                                        <div class="ml-auto">--}}
+{{--                                            <div class="report-box__indicator bg-theme-21 tooltip cursor-pointer" title="2% Lower than last month"> 2% <i data-feather="chevron-down" class="w-4 h-4 ml-0.5"></i> </div>--}}
+{{--                                        </div>--}}
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">3.721</div>
-                                    <div class="text-base text-gray-600 mt-1">New Orders</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6"><?php echo $staff_count; ?></div>
+                                    <div class="text-base text-gray-600 mt-1">Staffs</div>
                                 </div>
                             </div>
                         </div>
@@ -49,13 +49,13 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-feather="monitor" class="report-box__icon text-theme-15"></i>
-                                        <div class="ml-auto">
-                                            <div class="report-box__indicator bg-theme-20 tooltip cursor-pointer" title="12% Higher than last month"> 12% <i data-feather="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
-                                        </div>
+                                        <i data-feather="users" class="report-box__icon text-theme-15"></i>
+{{--                                        <div class="ml-auto">--}}
+{{--                                            <div class="report-box__indicator bg-theme-20 tooltip cursor-pointer" title="12% Higher than last month"> 12% <i data-feather="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>--}}
+{{--                                        </div>--}}
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6">2.149</div>
-                                    <div class="text-base text-gray-600 mt-1">Total Products</div>
+                                    <div class="text-base text-gray-600 mt-1">Passengers</div>
                                 </div>
                             </div>
                         </div>
@@ -63,13 +63,13 @@
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
-                                        <i data-feather="user" class="report-box__icon text-theme-20"></i>
-                                        <div class="ml-auto">
-                                            <div class="report-box__indicator bg-theme-20 tooltip cursor-pointer" title="22% Higher than last month"> 22% <i data-feather="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
-                                        </div>
+                                        <i data-feather="navigation" class="report-box__icon text-theme-20"></i>
+{{--                                        <div class="ml-auto">--}}
+{{--                                            <div class="report-box__indicator bg-theme-20 tooltip cursor-pointer" title="22% Higher than last month"> 22% <i data-feather="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>--}}
+{{--                                        </div>--}}
                                     </div>
                                     <div class="text-3xl font-medium leading-8 mt-6">152.040</div>
-                                    <div class="text-base text-gray-600 mt-1">Unique Visitor</div>
+                                    <div class="text-base text-gray-600 mt-1">Airplanes</div>
                                 </div>
                             </div>
                         </div>
