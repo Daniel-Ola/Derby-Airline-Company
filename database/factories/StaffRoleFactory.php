@@ -14,7 +14,7 @@ class StaffRoleFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence(6)
+            'title' => $this->faker->word()
         ];
     }
 }

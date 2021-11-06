@@ -49,9 +49,16 @@ class UpdateTableRelations extends Command
             $table->foreign('flightnum')->references('flightnum')->on('flights')->cascadeOnUpdate();
         });
 
-        Schema::table('flights', function (Blueprint $table) {
-            $table->string('flightnum')->unique()->change();
+        Schema::table('pilots', function (Blueprint $table) {
+            $table->dropForeign('pilots_empnum_foreign');
+            $table->foreign('empnum')->references('empnum')->on('staffs')->cascadeOnUpdate();
         });
-        return Command::SUCCESS;
+
+//        add unique property to pilot's empnum
+
+//        Schema::table('flights', function (Blueprint $table) {
+//            $table->string('flightnum')->unique()->change();
+//        });
+        return  Command::SUCCESS;
     }
 }

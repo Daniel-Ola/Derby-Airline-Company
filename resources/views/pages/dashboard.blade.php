@@ -54,7 +54,7 @@
 {{--                                            <div class="report-box__indicator bg-theme-20 tooltip cursor-pointer" title="12% Higher than last month"> 12% <i data-feather="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>--}}
 {{--                                        </div>--}}
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">2.149</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $passengers->count() }}</div>
                                     <div class="text-base text-gray-600 mt-1">Passengers</div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
 {{--                                            <div class="report-box__indicator bg-theme-20 tooltip cursor-pointer" title="22% Higher than last month"> 22% <i data-feather="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>--}}
 {{--                                        </div>--}}
                                     </div>
-                                    <div class="text-3xl font-medium leading-8 mt-6">152.040</div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ $airplanes->count() }}</div>
                                     <div class="text-base text-gray-600 mt-1">Airplanes</div>
                                 </div>
                             </div>
@@ -96,159 +96,70 @@
                                 <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
                             </div>
                         </div>
-                        <div class="intro-y">
-                            <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                    <img alt="Tinker Tailwind HTML Admin Template" src="dist/images/profile-6.jpg">
-                                </div>
-                                <div class="ml-4 mr-auto">
-                                    <div class="font-medium">Arnold Schwarzenegger</div>
-                                    <div class="text-gray-600 text-xs mt-0.5">23 August 2021</div>
-                                </div>
-                                <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
-                            </div>
-                        </div>
-                        <div class="intro-y">
-                            <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                    <img alt="Tinker Tailwind HTML Admin Template" src="dist/images/profile-15.jpg">
-                                </div>
-                                <div class="ml-4 mr-auto">
-                                    <div class="font-medium">Al Pacino</div>
-                                    <div class="text-gray-600 text-xs mt-0.5">13 August 2020</div>
-                                </div>
-                                <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
-                            </div>
-                        </div>
-                        <div class="intro-y">
-                            <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                    <img alt="Tinker Tailwind HTML Admin Template" src="dist/images/profile-4.jpg">
-                                </div>
-                                <div class="ml-4 mr-auto">
-                                    <div class="font-medium">Edward Norton</div>
-                                    <div class="text-gray-600 text-xs mt-0.5">6 November 2021</div>
-                                </div>
-                                <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
-                            </div>
-                        </div>
                         <a href="" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-theme-32 dark:border-dark-5 text-theme-33 dark:text-gray-600">View More</a>
                     </div>
                 </div>
                 <div class="col-span-12 xl:col-span-4 mt-6">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">
-                            Flights in Progress
+{{--                            Flights in Progress--}}
+                            Active Flight Schedules
                         </h2>
                     </div>
                     <div class="mt-5">
-                        <div class="intro-y">
-                            <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                    <img alt="Tinker Tailwind HTML Admin Template" src="dist/images/profile-8.jpg">
+                        @forelse($activeFlights as $flight)
+                            <div class="intro-y">
+                                <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
+                                    <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
+{{--                                        <img alt="Flight Schedule" src="dist/images/profile-8.jpg">--}}
+                                        <i data-feather="navigation" class="report-box__icon text-theme-24 dark:text-theme-25"></i>
+                                    </div>
+                                    <div class="ml-4 mr-auto">
+                                        <div class="font-medium">
+                                            {{ $flight->ORIGIN . ' to ' . $flight->DEST }}
+{{--                                            <i>{{ $flight->ORIGIN }}</i> to <i>{{ $flight->DEST }}</i>--}}
+                                        </div>
+                                        <div class="text-gray-600 text-xs mt-0.5">{{ $flight->status }}</div>
+                                    </div>
+                                    <div
+                                        class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium truncate"
+                                        title="{{$flight->passengers->count()}} Passengers">
+                                        {{$flight->passengers->count()}} Passengers
+                                    </div>
                                 </div>
-                                <div class="ml-4 mr-auto">
-                                    <div class="font-medium">Angelina Jolie</div>
-                                    <div class="text-gray-600 text-xs mt-0.5">28 May 2021</div>
-                                </div>
-                                <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
                             </div>
-                        </div>
-                        <div class="intro-y">
-                            <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                    <img alt="Tinker Tailwind HTML Admin Template" src="dist/images/profile-6.jpg">
-                                </div>
-                                <div class="ml-4 mr-auto">
-                                    <div class="font-medium">Arnold Schwarzenegger</div>
-                                    <div class="text-gray-600 text-xs mt-0.5">23 August 2021</div>
-                                </div>
-                                <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
-                            </div>
-                        </div>
-                        <div class="intro-y">
-                            <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                    <img alt="Tinker Tailwind HTML Admin Template" src="dist/images/profile-15.jpg">
-                                </div>
-                                <div class="ml-4 mr-auto">
-                                    <div class="font-medium">Al Pacino</div>
-                                    <div class="text-gray-600 text-xs mt-0.5">13 August 2020</div>
-                                </div>
-                                <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
-                            </div>
-                        </div>
-                        <div class="intro-y">
-                            <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                    <img alt="Tinker Tailwind HTML Admin Template" src="dist/images/profile-4.jpg">
-                                </div>
-                                <div class="ml-4 mr-auto">
-                                    <div class="font-medium">Edward Norton</div>
-                                    <div class="text-gray-600 text-xs mt-0.5">6 November 2021</div>
-                                </div>
-                                <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
-                            </div>
-                        </div>
-                        <a href="" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-theme-32 dark:border-dark-5 text-theme-33 dark:text-gray-600">View More</a>
+                        @empty
+                            <div class="alert alert-secondary show mb-2" role="alert">No active flight list at this time</div>
+                        @endforelse
+{{--                        <a href="" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-theme-32 dark:border-dark-5 text-theme-33 dark:text-gray-600">View More</a>--}}
                     </div>
                 </div>
                 <div class="col-span-12 xl:col-span-4 mt-6">
                     <div class="intro-y flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">
-                            Flight Schedules
+                            Available Airplanes
                         </h2>
                     </div>
+
                     <div class="mt-5">
-                        <div class="intro-y">
-                            <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                    <img alt="Tinker Tailwind HTML Admin Template" src="dist/images/profile-8.jpg">
+                        @forelse($airplanes as $plane)
+                            <div class="intro-y">
+                                <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
+                                    <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
+    {{--                                    <img alt="Tinker Tailwind HTML Admin Template" src="dist/images/profile-8.jpg">--}}
+                                        <i data-feather="navigation" class="report-box__icon text-theme-24 dark:text-theme-25"></i>
+                                    </div>
+                                    <div class="ml-4 mr-auto">
+                                        <div class="font-medium">{{ $plane->MANUFACTURER }}</div>
+                                        <div class="text-gray-600 text-xs mt-0.5">{{ $plane->MODEL_NUMBER }}</div>
+                                    </div>
+                                    <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
                                 </div>
-                                <div class="ml-4 mr-auto">
-                                    <div class="font-medium">Angelina Jolie</div>
-                                    <div class="text-gray-600 text-xs mt-0.5">28 May 2021</div>
-                                </div>
-                                <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
                             </div>
-                        </div>
-                        <div class="intro-y">
-                            <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                    <img alt="Tinker Tailwind HTML Admin Template" src="dist/images/profile-6.jpg">
-                                </div>
-                                <div class="ml-4 mr-auto">
-                                    <div class="font-medium">Arnold Schwarzenegger</div>
-                                    <div class="text-gray-600 text-xs mt-0.5">23 August 2021</div>
-                                </div>
-                                <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
-                            </div>
-                        </div>
-                        <div class="intro-y">
-                            <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                    <img alt="Tinker Tailwind HTML Admin Template" src="dist/images/profile-15.jpg">
-                                </div>
-                                <div class="ml-4 mr-auto">
-                                    <div class="font-medium">Al Pacino</div>
-                                    <div class="text-gray-600 text-xs mt-0.5">13 August 2020</div>
-                                </div>
-                                <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
-                            </div>
-                        </div>
-                        <div class="intro-y">
-                            <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
-                                <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">
-                                    <img alt="Tinker Tailwind HTML Admin Template" src="dist/images/profile-4.jpg">
-                                </div>
-                                <div class="ml-4 mr-auto">
-                                    <div class="font-medium">Edward Norton</div>
-                                    <div class="text-gray-600 text-xs mt-0.5">6 November 2021</div>
-                                </div>
-                                <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
-                            </div>
-                        </div>
-                        <a href="" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-theme-32 dark:border-dark-5 text-theme-33 dark:text-gray-600">View More</a>
+                        @empty
+                            none
+                        @endforelse
+{{--                        <a href="" class="intro-y w-full block text-center rounded-md py-4 border border-dotted border-theme-32 dark:border-dark-5 text-theme-33 dark:text-gray-600">View More</a>--}}
                     </div>
                 </div>
                 <!-- END: Weekly Best Sellers -->

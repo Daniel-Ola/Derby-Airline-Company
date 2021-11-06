@@ -13,12 +13,13 @@ class FlightFactory extends Factory
      */
     public function definition()
     {
+//        $this->faker->unique(true);
         return [
-            'flightnum' => 'DERFLY' . 999,
+            'flightnum' => 'DERFLY' . $this->faker->unique()->numberBetween(100, 199), //->numberBetween(401, 999),
             'origin' => $this->faker->city,
             'dest' => $this->faker->city,
             'airplane_id' => $this->faker->numberBetween(1, 100),
-            'pilot_id' => $this->faker->numberBetween(1, 100)
+            'pilot_id' => $this->faker->numberBetween(1, 20)
         ];
     }
 }

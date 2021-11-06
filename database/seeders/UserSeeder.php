@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\IntermediateCity;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class IntermediateCitySeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class IntermediateCitySeeder extends Seeder
      */
     public function run()
     {
-        IntermediateCity::factory()->count(100)->create();
+        User::factory()->count(5)->create();
     }
 }

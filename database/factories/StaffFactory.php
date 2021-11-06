@@ -13,8 +13,9 @@ class StaffFactory extends Factory
      */
     public function definition()
     {
+//        $this->faker->unique(true);
         return [
-            'empnum' => 'EMP' . 999,
+            'empnum' => 'EMP' . $this->faker->unique()->numberBetween(100, 199),
             'surname' => $this->faker->lastName,
             'name' => $this->faker->firstName,
             'address' => $this->faker->address,

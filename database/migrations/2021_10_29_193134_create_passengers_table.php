@@ -21,7 +21,7 @@ class CreatePassengersTable extends Migration
             $table->string('phone');
             $table->timestamp('date');
             $table->string('flightnum');
-            $table->foreign('flightnum')->references('flightnum')->on('flights');
+            $table->foreign('flightnum')->references('flightnum')->on('flights')->cascadeOnUpdate();
             $table->softDeletes();
             $table->timestamps();
         });

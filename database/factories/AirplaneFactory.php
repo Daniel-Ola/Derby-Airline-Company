@@ -13,10 +13,11 @@ class AirplaneFactory extends Factory
      */
     public function definition()
     {
+//        $this->faker->unique(true);
         return [
-            'numser' => $this->faker->numberBetween(99999, 999999),
+            'numser' => $this->faker->unique()->numberBetween(200, 300),
             'manufacturer' => $this->faker->firstName,
-            'model_number' => $this->faker->numberBetween(99, 999)
+            'model_number' => $this->faker->numberBetween(100, 150)
         ];
     }
 }

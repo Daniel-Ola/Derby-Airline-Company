@@ -11,4 +11,13 @@ class Staff extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = 'staffs';
+
+    protected $fillable = [
+        'empnum', 'surname', 'name', 'address', 'phone', 'salary', 'staff_role_id'
+    ];
+
+    public function scopePilots($query)
+    {
+//        return $query->where()
+    }
 }

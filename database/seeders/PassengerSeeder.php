@@ -14,6 +14,6 @@ class PassengerSeeder extends Seeder
      */
     public function run()
     {
-        Passenger::factory()->count(1)->create();
+        Passenger::factory()->count(100)->create();
     }
 }

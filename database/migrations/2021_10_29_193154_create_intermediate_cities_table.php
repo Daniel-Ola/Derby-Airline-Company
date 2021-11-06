@@ -16,7 +16,7 @@ class CreateIntermediateCitiesTable extends Migration
         Schema::create('intermediate_cities', function (Blueprint $table) {
             $table->id();
             $table->string('flightnum');
-            $table->foreign('flightnum')->references('flightnum')->on('flights');
+            $table->foreign('flightnum')->references('flightnum')->on('flights')->cascadeOnUpdate();
             $table->string('city');
             $table->timestamp('arr_time')->useCurrent();
             $table->timestamp('dep_time')->useCurrent();

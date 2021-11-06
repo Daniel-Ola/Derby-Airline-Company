@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function() {
     Route::get('faq-layout-2-page', [DashboardController::class, 'faqLayout2'])->name('faq-layout-2');
     Route::get('faq-layout-3-page', [DashboardController::class, 'faqLayout3'])->name('faq-layout-3');
 //    Route::get('login-page', [DashboardController::class, 'login'])->name('login');
-    Route::get('register-page', [DashboardController::class, 'register'])->name('register');
+//    Route::get('register-page', [DashboardController::class, 'register'])->name('register');
     Route::get('error-page-page', [DashboardController::class, 'errorPage'])->name('error-page');
     Route::get('update-profile-page', [DashboardController::class, 'updateProfile'])->name('update-profile');
     Route::get('change-password-page', [DashboardController::class, 'changePassword'])->name('change-password');

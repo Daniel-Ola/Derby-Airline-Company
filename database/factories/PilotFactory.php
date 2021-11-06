@@ -13,8 +13,9 @@ class PilotFactory extends Factory
      */
     public function definition()
     {
+        $this->faker->unique(true);
         return [
-            'empnum' => 'EMP' . 999,
+            'empnum' => 'EMP' . $this->faker->unique()->numberBetween(100, 199),
             'pilot_rating_id' => $this->faker->numberBetween(1, 3)
         ];
     }
