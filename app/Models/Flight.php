@@ -14,7 +14,7 @@ class Flight extends Model
 
     public function passengers()
     {
-        return $this->hasMany(Passenger::class, 'FLIGHTNUM', 'FLIGHTNUM');
+        return $this->hasMany(Passenger::class, 'flightnum', 'flightnum');
     }
 
     public function scopeCompleted($query) {

@@ -16,16 +16,19 @@ class DashboardController extends Controller
         $month = Carbon::now()->month;
         $flightThisMonth = Flight::whereMonth('created_at', '=', $month)->get();
         $activeFlights = Flight::activePassengers()->with('passengers');//->get();
+        $flightsInProgress = Flight::inProgress()->with('passengers');//->get();
         $activePassengers = Passenger::whereIn('flightnum', $activeFlights->pluck('flightnum')->toArray())->get();
-        $pilots = Staff::all();
-        dd($pilots);
+        $passengersOnBoard = Passenger::whereIn('flightnum', $flightsInProgress->pluck('flightnum')->toArray())->paginate(10);//->get();
+        $pilots = Staff::myPilots()->take(4)->get();
 
         return view('pages.dashboard', [
             'staff_count' => Staff::count(),
             'flights' => $flightThisMonth,
             'passengers' => $activePassengers,
             'airplanes' => Airplane::take(4)->get(),
-            'activeFlights' => $activeFlights->take(4)->get()
+            'activeFlights' => $activeFlights->take(4)->get(),
+            'pilots' => $pilots,
+            'passengersOnBoard' => $passengersOnBoard
         ]);
 
     }

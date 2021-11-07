@@ -8,4 +8,15 @@ class Helper
     {
         return str_replace('>', 'HTMLCloseTag', str_replace('<', 'HTMLOpenTag', $code));
     }
+
+    public function formatNumber($number)
+    {
+        $num_length = strlen($number);
+        for ($i = $num_length; $i < 6; $i++)
+        {
+            $number = '0' . $number;
+        }
+
+        return $number;
+    }
 }

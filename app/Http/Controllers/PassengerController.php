@@ -14,7 +14,7 @@ class PassengerController extends Controller
      */
     public function index()
     {
-        //
+        return 'we are almost here';
     }
 
     /**

@@ -14,7 +14,7 @@ class FlightController extends Controller
      */
     public function index()
     {
-        //
+        return 'Coming soon bro';
     }
 
     /**

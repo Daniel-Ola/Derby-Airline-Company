@@ -27,33 +27,33 @@ class SideMenu
                 'sub_menu' => [
                     'side-menu' => [
                         'icon' => '',
-                        'route_name' => 'dashboard-overview-1',
+                        'route_name' => 'staffs.index',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
-                        'title' => 'Side Menu'
+                        'title' => 'Staff List'
                     ],
                     'simple-menu' => [
                         'icon' => '',
-                        'route_name' => 'dashboard-overview-1',
+                        'route_name' => 'staffs.create',
                         'params' => [
                             'layout' => 'simple-menu'
                         ],
-                        'title' => 'Simple Menu'
+                        'title' => 'Add Staff'
                     ],
                     'top-menu' => [
                         'icon' => '',
-                        'route_name' => 'dashboard-overview-1',
+                        'route_name' => 'staffs.show',
                         'params' => [
                             'layout' => 'top-menu'
                         ],
-                        'title' => 'Top Menu'
+                        'title' => 'Manage Staff'
                     ]
                 ]
             ],
             'inbox' => [
                 'icon' => 'inbox',
-                'route_name' => 'inbox',
+                'route_name' => 'flights.index',
                 'params' => [
                     'layout' => 'side-menu'
                 ],
@@ -61,7 +61,7 @@ class SideMenu
             ],
             'file-manager' => [
                 'icon' => 'hard-drive',
-                'route_name' => 'file-manager',
+                'route_name' => 'airplanes.index',
                 'params' => [
                     'layout' => 'side-menu'
                 ],
@@ -69,7 +69,7 @@ class SideMenu
             ],
             'point-of-sale' => [
                 'icon' => 'credit-card',
-                'route_name' => 'point-of-sale',
+                'route_name' => 'passengers.index',
                 'params' => [
                     'layout' => 'side-menu'
                 ],

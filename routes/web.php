@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ {
     DashboardController,
-    DarkModeController
+    DarkModeController,
+    StaffController,
+    FlightController,
+    AirplaneController,
+    PassengerController
 };
 
 /*
@@ -21,6 +25,21 @@ Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('d
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('staffs', StaffController::class, [
+        'except' => ['show']
+    ]);//->name('staff');
+    Route::get('show/{staff?}', [StaffController::class, 'show'])
+        ->name('staffs.show');
+
+    Route::resource('flights', FlightController::class, [
+        'except' => ['show']
+    ]);//->name('staff');
+    Route::resource('airplanes', AirplaneController::class, [
+        'except' => ['show']
+    ]);//->name('staff');
+    Route::resource('passengers', PassengerController::class, [
+        'except' => ['show']
+    ]);//->name('staff');
 });
 
 require __DIR__.'/auth.php';
