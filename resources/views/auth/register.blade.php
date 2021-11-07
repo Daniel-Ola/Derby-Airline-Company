@@ -2,7 +2,7 @@
 @extends('../layout/' . $layout)
 
 @section('head')
-    <title>Register - Tinker - Tailwind HTML Admin Template</title>
+    <title>Register - {{ __(config('app.name')) }} </title>
 @endsection
 
 @section('content')

@@ -13,7 +13,7 @@
             <a href="" class="-intro-x hidden md:flex">
                 <img alt="" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
                 <span class="text-white text-lg ml-3">
-                    Tink<span class="font-medium">er</span>
+                    Derby<span class="font-medium"> Airline</span>
                 </span>
             </a>
             <!-- END: Logo -->

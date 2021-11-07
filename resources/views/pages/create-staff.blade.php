@@ -1,7 +1,7 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Dashboard - Tinker - Tailwind HTML Admin Template</title>
+    <title>Dashboard - {{ config('app.name') }}</title>
 @endsection
 
 @section('subcontent')
