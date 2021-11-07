@@ -16,13 +16,14 @@ class FlightSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        Flight::factory()->count(50)->state([
-            new Sequence(
-                ['status' => 'waiting'],
-                ['status' => 'in-progress'],
-                ['status' => 'completed'],
-            )
-        ])->create();
+        Flight::factory()->count(50)->create();
+//        ->state([
+//            new Sequence(
+//                ['status' => 'waiting'],
+//                ['status' => 'in-progress'],
+//                ['status' => 'completed'],
+//            )
+//        ])
 //        for ($i = 1; $i <= 100; $i++) {
 //            $num = $i;
 //            if ($i < 10)
