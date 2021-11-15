@@ -26,10 +26,12 @@ Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('d
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('staffs', StaffController::class, [
-        'except' => ['show']
+        'except' => ['show', 'index']
     ]);//->name('staff');
-    Route::get('show/{staff?}', [StaffController::class, 'show'])
+    Route::get('staffs/show/{staff?}', [StaffController::class, 'show'])
         ->name('staffs.show');
+    Route::get('staffs/{search?}', [StaffController::class, 'index'])
+        ->name('staffs.index');//->where(['search' => 'a-zA-Z']);
 
     Route::resource('flights', FlightController::class, [
         'except' => ['show']

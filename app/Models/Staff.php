@@ -37,7 +37,7 @@ class Staff extends Model
     }
 
     public function getFullNameAttribute() {
-        return ucfirst($this->name) . ' ' . ucfirst($this->surname);
+        return ucfirst($this->name) . ' ' . strtoupper($this->surname);
     }
 
     public function getStaffSalaryAttribute() {

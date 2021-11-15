@@ -29,7 +29,7 @@
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-gray-700 dark:text-gray-300">
                     <form action="" method="get">
-                        <input type="text" class="form-control w-56 box pr-10 placeholder-theme-13" placeholder="Search..." name="search">
+                        <input type="text" class="form-control w-56 box pr-10 placeholder-theme-13" placeholder="Search..." name="search" value="{{ request()->get('search') }}">
                         <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-feather="search"></i>
                     </form>
                 </div>
@@ -85,7 +85,18 @@
                 </div>
             </div>
         @empty
-            There are no staffs, proceed to <a href="{{ route('staffs.create') }}">add new staff</a>
+            <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4">
+                <div class="alert alert-danger alert-dismissible show flex items-center mb-2" role="alert">
+                    <i data-feather="alert-octagon" class="w-6 h-6 mr-2"></i>
+                    <p>
+                        There are no staffs, proceed to
+                        <a href="{{ route('staffs.create') }}" class="underline mr-2 text-red-600">Add New Staff</a>
+                    </p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        <i data-feather="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
         @endforelse
 
 

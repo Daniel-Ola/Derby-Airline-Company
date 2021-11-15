@@ -171,10 +171,6 @@
                         <h2 class="text-lg font-medium truncate mr-5">
                             Passengers On-Board
                         </h2>
-                        <div class="flex items-center sm:ml-auto mt-3 sm:mt-0">
-                            <button class="btn box flex items-center text-gray-700 dark:text-gray-300"> <i data-feather="file-text" class="hidden sm:block w-4 h-4 mr-2"></i> Export to Excel </button>
-                            <button class="ml-3 btn box flex items-center text-gray-700 dark:text-gray-300"> <i data-feather="file-text" class="hidden sm:block w-4 h-4 mr-2"></i> Export to PDF </button>
-                        </div>
                     </div>
                     <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
                         <table class="table table-report sm:mt-2">

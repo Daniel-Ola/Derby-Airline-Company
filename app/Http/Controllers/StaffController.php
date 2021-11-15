@@ -24,7 +24,16 @@ class StaffController extends Controller
      */
     public function index()
     {
-        $staffs = Staff::myStaffList()->paginate(12);
+        $search = \request()->get('search');
+        $staffs = Staff::myStaffList()->latest()->paginate(12);
+        if ($search != '')
+        {
+            $staffs = Staff::myStaffList()->where(function ($query) use($search) {
+                return $query->where('name', 'LIKE', '%' . $search . '%')
+                    ->orWhere('surname', 'LIKE', '%' . $search . '%');
+            })->latest()->paginate(12);
+//            use full text search to perfect this area
+        }
         return view('pages.staffs-list', [
             'staffs' => $staffs
         ]);
