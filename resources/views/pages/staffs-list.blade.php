@@ -29,7 +29,7 @@
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-gray-700 dark:text-gray-300">
                     <form action="" method="get">
-                        <input type="text" class="form-control w-56 box pr-10 placeholder-theme-13" placeholder="Search..." name="search" value="{{ request()->get('search') }}">
+                        <input type="text" class="form-control w-56 box pr-10 placeholder-theme-13" placeholder="Search..." name="search" value="{{ request()->get('search') }}" required>
                         <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-feather="search"></i>
                     </form>
                 </div>
@@ -54,8 +54,16 @@
                             <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
                             <div class="dropdown-menu w-40">
                                 <div class="dropdown-menu__content box dark:bg-dark-1 p-2">
-                                    <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
-                                    <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="trash" class="w-4 h-4 mr-2"></i> Delete </a>
+                                    <a  href="{{ route('staffs.edit', $staff->id) }}" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md">
+                                        <i data-feather="edit-2" class="w-4 h-4 mr-2"></i>
+                                        Edit
+                                    </a>
+                                    <a href="{{ route('staffs.destroy', $staff->id) }}"
+                                       onclick="event.preventDefault(); document.getElementById('form{{ $staff->id }}').submit() "
+                                       class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md">
+                                        <i data-feather="trash" class="w-4 h-4 mr-2"></i>
+                                        Delete
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -63,12 +71,34 @@
                     <div class="text-center lg:text-left p-5">
                         <div class="truncate">{{ $staff->address }}</div>
                         <div class="flex items-center justify-center lg:justify-start text-gray-600 mt-5"> <i data-feather="phone" class="w-3 h-3 mr-2"></i>
-                            {{ $staff->phone }} </div>
-                        <div class="flex items-center justify-center lg:justify-start text-gray-600 mt-1"> <i data-feather="briefcase" class="w-3 h-3 mr-2"></i>
-                            {!! $staff->staff_salary !!} </div>
+                            {{ $staff->phone }}
+                        </div>
+                        <div class="flex items-center justify-center lg:justify-start text-gray-600 mt-1">
+                            <div class="flex-1">
+                                <i data-feather="briefcase" class="w-3 h-3 mr-2"></i>
+                                {!! $staff->staff_salary !!}
+                            </div>
+                            <div class="flex-1">
+
+
+                                @php
+                                    $rating = $staff->pilot_rating;
+                                    if ($rating) {
+                                @endphp
+                                    <i data-feather="star" class="w-3 h-3 mr-2"></i>
+                                    {{ $rating }}
+                                    @for($i = 0; $i < $rating; $i++)
+                                        {!! '&#11088;' !!}
+                                    @endfor
+                                @php
+                                    }
+                                @endphp
+
+                            </div>
+                        </div>
                     </div>
                     <div class="text-center lg:text-right p-5 border-t border-gray-200 dark:border-dark-5">
-                        <button class="btn btn-primary py-1 px-2 mr-2"> <i data-feather="edit" class="w-3 h-3 mr-2"></i> Edit</button>
+                        <a href="{{ route('staffs.edit', $staff->id) }}" class="btn btn-primary py-1 px-2 mr-2"> <i data-feather="edit" class="w-3 h-3 mr-2"></i> Edit</a>
                         <a
                             href="{{ route('staffs.destroy', $staff->id) }}"
                             class="btn btn-danger py-1 px-2"

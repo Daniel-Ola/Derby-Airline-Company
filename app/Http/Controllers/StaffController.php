@@ -25,15 +25,16 @@ class StaffController extends Controller
     public function index()
     {
         $search = \request()->get('search');
-        $staffs = Staff::myStaffList()->latest()->paginate(12);
+        $staffs = Staff::myStaffList();
         if ($search != '')
         {
             $staffs = Staff::myStaffList()->where(function ($query) use($search) {
                 return $query->where('name', 'LIKE', '%' . $search . '%')
                     ->orWhere('surname', 'LIKE', '%' . $search . '%');
-            })->latest()->paginate(12);
+            });
 //            use full text search to perfect this area
         }
+        $staffs = $staffs->latest()->paginate(12); //->pilotRating()
         return view('pages.staffs-list', [
             'staffs' => $staffs
         ]);
@@ -68,12 +69,12 @@ class StaffController extends Controller
             $lastStaff = Staff::latest()->first()->id + 1;
             $empnum = 'EMP' . $helper->formatNumber($lastStaff);
             $data['empnum'] = $empnum;
-            if ($staffCreateRequest->pilot_rating_id == 6) {
+            if ($staffCreateRequest->staff_role_id == 6) {
 //                Session::put(['pilot_rating_id' => $staffCreateRequest->pilot_rating_id]);
                 if(Staff::create($data)) {
                     Pilot::create([
-                        'empnum' => empnum,
-                        'pilot_rating_id' => $staffCreateRequest->pilot_rating_id
+                        'empnum' => $empnum,
+                        'pilot_rating_id' => intval($staffCreateRequest->pilot_rating_id)
                     ]);
                 } else {
                     throw new StaffException('Staff Could not be created');
@@ -97,7 +98,7 @@ class StaffController extends Controller
      */
     public function show(Staff $staff)
     {
-        dd('show');
+
     }
 
     /**
@@ -108,7 +109,19 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
-        dd('edit');
+        $data = Staff::where('staffs.id', $staff->id)
+            ->leftjoin('pilots', 'staffs.empnum', '=', 'pilots.empnum')
+            ->leftjoin('pilot_ratings', 'pilots.pilot_rating_id', '=', 'pilot_ratings.id')
+            ->select('staffs.*', 'pilot_ratings.id as pilot_rating')
+            ->first();
+
+        $roles = StaffRole::orderBy('title')->get();
+        $pilotRating = PilotRating::orderBy('rating')->get();
+
+        return view('pages.edit-staff')
+            ->withStaff($data)
+            ->withRoles($roles)
+            ->withRating($pilotRating);
     }
 
     /**
@@ -116,11 +129,36 @@ class StaffController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Staff  $staff
-     * @return \Illuminate\Http\Response
+     * @return bool
      */
     public function update(Request $request, Staff $staff)
     {
-        dd('update');
+        $updateData = $request->except(['_token', '_method', 'pilot_rating_id']);
+        Validator::make($request->all(), [
+            'pilot_rating_id' => 'required'//_if:staff_role_id,6'
+        ], [
+            'pilot_rating_id.required_if' => 'Pilot rating is required for any staff added as a pilot'
+        ]);
+        dd(21312);
+        if($request->pilot_rating_id && $request->staff_role_id) {
+            dd(2132);
+
+            $update = $request->staff_role_id == 6 ?  $request->pilot_rating_id : null;
+
+            $pilot = Pilot::whereEmpnum($staff->empnum);
+            if ($pilot->exists()) {
+                $pilot->update(['pilot_rating_id' => $update]);
+            } else {
+                Pilot::create([
+                    'empnum' => $staff->empnum,
+                    'pilot_rating_id' => $update
+                ]);
+            }
+        }
+
+        $updatedData = $staff->update($updateData);
+        return back()->withSuccess('Done');
+
     }
 
     /**

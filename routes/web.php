@@ -28,9 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('staffs', StaffController::class, [
         'except' => ['show', 'index']
     ]);//->name('staff');
-    Route::get('staffs/show/{staff?}', [StaffController::class, 'show'])
-        ->name('staffs.show');
-    Route::get('staffs/{search?}', [StaffController::class, 'index'])
+//    Route::get('staffs/show/{staff?}', [StaffController::class, 'show'])
+//        ->name('staffs.show');
+    Route::get('staffs', [StaffController::class, 'index'])
         ->name('staffs.index');//->where(['search' => 'a-zA-Z']);
 
     Route::resource('flights', FlightController::class, [

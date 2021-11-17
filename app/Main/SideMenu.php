@@ -37,18 +37,18 @@ class SideMenu
                         'icon' => '',
                         'route_name' => 'staffs.create',
                         'params' => [
-                            'layout' => 'simple-menu'
+                            'layout' => 'side-menu'
                         ],
                         'title' => 'Add Staff'
                     ],
-                    'top-menu' => [
-                        'icon' => '',
-                        'route_name' => 'staffs.show',
-                        'params' => [
-                            'layout' => 'top-menu'
-                        ],
-                        'title' => 'Manage Staff'
-                    ]
+//                    'top-menu' => [
+//                        'icon' => '',
+//                        'route_name' => 'staffs.show',
+//                        'params' => [
+//                            'layout' => 'side-menu'
+//                        ],
+//                        'title' => 'Manage Staff'
+//                    ]
                 ]
             ],
             'inbox' => [
