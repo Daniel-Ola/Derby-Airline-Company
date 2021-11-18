@@ -19,7 +19,8 @@
                 <div class="my-auto">
                     <img alt="{{ config('app.name') }}" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/illustration.svg') }}">
                     <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">A few more clicks to <br> sign in to your account.</div>
-                    <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500">Manage all flight schedules, staffs and machines in one place</div>
+
+                    <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500">Manage all flight schedules, staffs and machines in one place {{ \Illuminate\Support\Facades\URL::previous() }} {{ \Illuminate\Support\Facades\URL::current() }}</div>
                 </div>
             </div>
             <!-- END: Login Info -->
@@ -59,6 +60,7 @@
 
 @section('script')
     <script>
+        // location.href = 'http://derby-airline-company.test/flights?layout=side-menu';
         cash(function () {
             async function login() {
                 // Reset state
@@ -81,6 +83,8 @@
                 }).then(res => {
                     let data = res.data.data;
                     if (data.success && data.redirect) {
+                        console.log(data.redirectTo);
+                        return;
                         location.href = data.redirectTo;
                     }
                 }).catch(err => {

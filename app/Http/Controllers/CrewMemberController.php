@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Flight;
+use App\Models\CrewMember;
 use Illuminate\Http\Request;
 
-class FlightController extends Controller
+class CrewMemberController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $flights = Flight::members()->paginate(12);
-        return view('pages.fights-index', [
-            'flights' => $flights
-        ]);
+        //
     }
 
     /**
@@ -44,10 +41,10 @@ class FlightController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Flight  $flight
+     * @param  \App\Models\CrewMember  $crewMember
      * @return \Illuminate\Http\Response
      */
-    public function show(Flight $flight)
+    public function show(CrewMember $crewMember)
     {
         //
     }
@@ -55,10 +52,10 @@ class FlightController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Flight  $flight
+     * @param  \App\Models\CrewMember  $crewMember
      * @return \Illuminate\Http\Response
      */
-    public function edit(Flight $flight)
+    public function edit(CrewMember $crewMember)
     {
         //
     }
@@ -67,10 +64,10 @@ class FlightController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Flight  $flight
+     * @param  \App\Models\CrewMember  $crewMember
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Flight $flight)
+    public function update(Request $request, CrewMember $crewMember)
     {
         //
     }
@@ -78,10 +75,10 @@ class FlightController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Flight  $flight
+     * @param  \App\Models\CrewMember  $crewMember
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Flight $flight)
+    public function destroy(CrewMember $crewMember)
     {
         //
     }

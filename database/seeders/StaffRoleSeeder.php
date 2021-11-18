@@ -14,6 +14,24 @@ class StaffRoleSeeder extends Seeder
      */
     public function run()
     {
-        StaffRole::factory()->count(5)->create();
+        StaffRole::create([
+            'title' => 'Air Hostess'
+        ]);
+        StaffRole::create([
+            'title' => 'Flight Attendant'
+        ]);
+        StaffRole::create([
+            'title' => 'Aircraft Engineer'
+        ]);
+        StaffRole::create([
+            'title' => 'Navigator'
+        ]);
+        StaffRole::create([
+            'title' => 'Co-Pilot'
+        ]);
+        StaffRole::create([
+            'title' => 'Pilot'
+        ]);
+//        StaffRole::factory()->count(5)->create();
     }
 }

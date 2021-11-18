@@ -17,6 +17,23 @@ class Flight extends Model
         return $this->hasMany(Passenger::class, 'flightnum', 'flightnum');
     }
 
+    public function crewMembers()
+    {
+        return $this->hasMany(CrewMember::class, 'flightnum', 'flightnum');
+    }
+
+    public function airplane()
+    {
+        return $this->hasOne(Airplane::class, 'id', 'airplane_id');
+    }
+
+    public function scopeMembers($query)
+    {
+        return $query->with('airplane')
+            ->with('passengers')
+            ->with('crewmembers');
+    }
+
     public function scopeCompleted($query) {
         return $query->whereStatus('completed');
     }
@@ -35,5 +52,16 @@ class Flight extends Model
 
     public function scopeActivePassengers($query) {
         return $query->where('status', '<>', 'completed');
+    }
+
+    public function getFlightStatusAttribute()
+    {
+        $status = [
+            'in-progress' => 'In Progress',
+            'completed' => 'Completed',
+            'waiting' => 'Waiting'
+        ];
+
+        return $status[$this->status];
     }
 }

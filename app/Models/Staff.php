@@ -22,6 +22,8 @@ class Staff extends Model
         return $this->hasMany(Pilot::class, 'empnum', 'empnum');
     }
 
+//    publ
+
 //    public function
 
     public function scopeMyPilots($query)

@@ -8,6 +8,7 @@ use App\Models\Flight;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -42,7 +43,7 @@ class AuthenticatedSessionController extends Controller
             'data' => [
                 'success' => true,
                 'redirect' => true,
-                'redirectTo' => RouteServiceProvider::HOME
+                'redirectTo' => URL::previous() == URL::current() ? RouteServiceProvider::HOME : URL::previous()
             ]
         ], 201);
         // redirect()->intended(RouteServiceProvider::HOME);

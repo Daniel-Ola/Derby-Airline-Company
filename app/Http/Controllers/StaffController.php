@@ -10,7 +10,6 @@ use App\Models\Staff;
 use App\Models\StaffRole;
 use Illuminate\Http\Request;
 use App\Helper;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class StaffController extends Controller
@@ -139,9 +138,7 @@ class StaffController extends Controller
         ], [
             'pilot_rating_id.required_if' => 'Pilot rating is required for any staff added as a pilot'
         ]);
-        dd(21312);
         if($request->pilot_rating_id && $request->staff_role_id) {
-            dd(2132);
 
             $update = $request->staff_role_id == 6 ?  $request->pilot_rating_id : null;
 
@@ -169,7 +166,6 @@ class StaffController extends Controller
      */
     public function destroy(Staff $staff)
     {
-//        dd($staff->id);
         Staff::find($staff->id)->delete();
         return back()->with('message', 'User Deleted Successfully');
     }

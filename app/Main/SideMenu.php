@@ -41,23 +41,29 @@ class SideMenu
                         ],
                         'title' => 'Add Staff'
                     ],
-//                    'top-menu' => [
-//                        'icon' => '',
-//                        'route_name' => 'staffs.show',
-//                        'params' => [
-//                            'layout' => 'side-menu'
-//                        ],
-//                        'title' => 'Manage Staff'
-//                    ]
                 ]
             ],
             'inbox' => [
                 'icon' => 'inbox',
-                'route_name' => 'flights.index',
-                'params' => [
-                    'layout' => 'side-menu'
-                ],
-                'title' => 'Flights'
+                'title' => 'Flights',
+                'sub_menu' => [
+                    'flight-index' => [
+                        'icon' => '',
+                        'route_name' => 'flights.index',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Flight Schedules'
+                    ],
+                    'flight-create' => [
+                        'icon' => '',
+                        'route_name' => 'flights.create',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Create A Schedule'
+                    ],
+                ]
             ],
             'file-manager' => [
                 'icon' => 'hard-drive',
