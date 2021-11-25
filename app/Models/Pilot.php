@@ -18,4 +18,9 @@ class Pilot extends Model
     {
         return $this->belongsTo(Staff::class, 'empnum', 'empnum');
     }
+
+    public function airplanes()
+    {
+        return $this->belongsTo(Airplane::class,  'pilot_rating_id', 'pilot_rating_id');
+    }
 }

@@ -83,8 +83,8 @@
                 }).then(res => {
                     let data = res.data.data;
                     if (data.success && data.redirect) {
-                        console.log(data.redirectTo);
-                        return;
+                        // console.log(data.redirectTo);
+                        // return;
                         location.href = data.redirectTo;
                     }
                 }).catch(err => {

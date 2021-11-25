@@ -2,9 +2,18 @@
 <div class="top-bar -mx-4 px-4 md:mx-0 md:px-0">
     <!-- BEGIN: Breadcrumb -->
     <div class="-intro-x breadcrumb mr-auto hidden sm:flex">
-        <a href="">Application</a>
-        <i data-feather="chevron-right" class="breadcrumb__icon"></i>
-        <a href="" class="breadcrumb--active">Dashboard</a>
+        <a href="{{ route('dashboard') }}">Dashboard</a>
+{{--        @dd($breadcrumb)--}}
+        @if(is_array($breadcrumb) && count($breadcrumb) != 0)
+            @for($b=0; $b < count($breadcrumb); $b++)
+                <i data-feather="chevron-right" class="breadcrumb__icon"></i>
+                <a href="{{ $breadcrumb[$b]['url'] }}"
+                    @if($b == (count($breadcrumb) - 1) )
+                        class="breadcrumb--active"
+                    @endif
+                >{{ $breadcrumb[$b]['title'] }}</a>
+            @endfor
+        @endif
     </div>
     <!-- END: Breadcrumb -->
     <!-- BEGIN: Search -->

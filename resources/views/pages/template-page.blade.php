@@ -6,7 +6,7 @@
 
 @section('subcontent')
 
-    @include('pages.includes.session-flash-message-notification');
+    @include('pages.includes.session-flash-message-notification')
 
 
 

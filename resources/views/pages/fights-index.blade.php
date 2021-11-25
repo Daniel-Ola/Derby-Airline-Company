@@ -20,7 +20,7 @@
             </a>
         </div>
 
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 
             @forelse($flights as $flight)
                 @php
@@ -38,29 +38,29 @@
                             <div class="relative text-smalls text-big font-medium mt-12 pl-4 ml-0.5">
                                 {{ $flight->flightnum }}
                             </div>
-                            <div class="mt-4 text-gray-600 dark:text-gray-600 hidden">
+                            <div class="mt-4 text-gray-600 dark:text-gray-600">
                                 <div class="mt-5">
                                     <div class="flex items-center">
                                         <div class="w-2 h-2 bg-theme-11 rounded-full mr-3"></div>
-{{--                                        <span class="truncate">Pilot - {{ dd($crewmembers) }}</span>--}}
+                                        <span class="truncate">{{ $flight->flight_status }}</span>
                                     </div>
-                                    <div class="flex items-center mt-4">
-                                        <div class="w-2 h-2 bg-theme-21 rounded-full mr-3"></div>
-                                        <span class="truncate">31 - 50 Years old</span>
-                                        <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
-                                        <span class="font-medium xl:ml-auto">33%</span>
-                                    </div>
-                                    <div class="flex items-center mt-4">
-                                        <div class="w-2 h-2 bg-theme-15 rounded-full mr-3"></div>
-                                        <span class="truncate">&gt;= 50 Years old</span>
-                                        <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
-                                        <span class="font-medium xl:ml-auto">10%</span>
-                                    </div>
+{{--                                    <div class="flex items-center mt-4">--}}
+{{--                                        <div class="w-2 h-2 bg-theme-21 rounded-full mr-3"></div>--}}
+{{--                                        <span class="truncate">31 - 50 Years old</span>--}}
+{{--                                        <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>--}}
+{{--                                        <span class="font-medium xl:ml-auto">33%</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="flex items-center mt-4">--}}
+{{--                                        <div class="w-2 h-2 bg-theme-15 rounded-full mr-3"></div>--}}
+{{--                                        <span class="truncate">&gt;= 50 Years old</span>--}}
+{{--                                        <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>--}}
+{{--                                        <span class="font-medium xl:ml-auto">10%</span>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
-                            <button class="btn btn-primary relative justify-start rounded-full mt-12 justify-center">
-                                {{ $flight->flight_status }}
-                            </button>
+                            <a href="{{ route('flights.manage', [$flight->flightnum]) }}" class="btn btn-primary relative justify-start rounded-full mt-12 justify-center">
+                                Manage
+                            </a>
                         </div>
                         <div class="px-8 py-12 flex flex-col justify-center flex-1 border-t sm:border-t-0 sm:border-l border-gray-300 dark:border-dark-5 border-dashed">
                             <div class="text-gray-600 dark:text-gray-600 text-xs">ORIGIN</div>

@@ -21,6 +21,8 @@ use App\Http\Controllers\ {
 |
 */
 
+Route::get('/', [DashboardController::class, 'welcome'])->name('welcome');
+
 Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
 
 Route::middleware('auth')->group(function () {
@@ -36,9 +38,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('flights', FlightController::class, [
         'except' => ['show']
     ]);//->name('staff');
-    Route::resource('airplanes', AirplaneController::class, [
-        'except' => ['show']
-    ]);//->name('staff');
+
+    Route::get('flights/manage/{flightnum}', [FlightController::class, 'manage'])->name('flights.manage');
+    Route::post('flights/manage/{flightnum}', [FlightController::class, 'do_manage'])->name('do.flights.manage');
+    Route::post('flights/book-flight/{flightnum}', [FlightController::class, 'bookFlight'])->name('flights.book');
+
+    Route::resource('airplanes', AirplaneController::class);
     Route::resource('passengers', PassengerController::class, [
         'except' => ['show']
     ]);//->name('staff');

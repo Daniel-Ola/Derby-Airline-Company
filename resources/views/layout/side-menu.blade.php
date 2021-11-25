@@ -78,7 +78,7 @@
         <!-- END: Side Menu -->
         <!-- BEGIN: Content -->
         <div class="content @yield('content-modifier')">
-            @include('../layout/components/top-bar')
+            @include('../layout/components/top-bar', ['breadcrumb' => $breadcrumb ?? []])
             @yield('subcontent')
         </div>
         <!-- END: Content -->

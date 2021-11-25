@@ -22,6 +22,16 @@ class Staff extends Model
         return $this->hasMany(Pilot::class, 'empnum', 'empnum');
     }
 
+    public function role()
+    {
+        return $this->hasOne(StaffRole::class, 'id', 'staff_role_id');
+    }
+
+//    public function scopeStaffRole($query)
+//    {
+//        return $query->
+//    }
+
 //    publ
 
 //    public function

@@ -2,6 +2,8 @@
 
 namespace App\Http\View\Composers;
 
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 use App\Main\TopMenu;
 use App\Main\SideMenu;

@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    public function welcome()
+    {
+        return 'welcome';
+    }
+
     public function index() {
 
         $month = Carbon::now()->month;

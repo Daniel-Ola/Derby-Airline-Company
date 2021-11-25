@@ -21,7 +21,7 @@ class SideMenu
                     'layout' => 'side-menu'
                 ],
             ],
-            'menu-layout' => [
+            'staff' => [
                 'icon' => 'box',
                 'title' => 'Staffs',
                 'sub_menu' => [
@@ -43,7 +43,7 @@ class SideMenu
                     ],
                 ]
             ],
-            'inbox' => [
+            'flight' => [
                 'icon' => 'inbox',
                 'title' => 'Flights',
                 'sub_menu' => [
@@ -65,13 +65,27 @@ class SideMenu
                     ],
                 ]
             ],
-            'file-manager' => [
+            'machine' => [
                 'icon' => 'hard-drive',
-                'route_name' => 'airplanes.index',
-                'params' => [
-                    'layout' => 'side-menu'
-                ],
-                'title' => 'Airplanes'
+                'title' => 'Airplane',
+                'sub_menu' => [
+                    'airplane-index' => [
+                        'icon' => '',
+                        'route_name' => 'airplanes.index',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Machine List'
+                    ],
+//                    'airplane-create' => [
+//                        'icon' => '',
+//                        'route_name' => 'airplanes.create',
+//                        'params' => [
+//                            'layout' => 'side-menu'
+//                        ],
+//                        'title' => 'Add Machine'
+//                    ],
+                ]
             ],
             'point-of-sale' => [
                 'icon' => 'credit-card',
