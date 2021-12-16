@@ -132,7 +132,7 @@ $helperClass = new Helper();
                                     <option selected>Select One</option>
                                     @foreach($aircraft as $plane)
                                         <option value="{{ $plane->id }}">
-                                            {{ $plane->manufacturer . ' ' . $plane->numser }}
+                                            {{ $plane->manufacturer . ' ' . $plane->numser }} &nbsp;&nbsp;&nbsp;(Rating - {{ $plane->pilot_rating_id }})
                                         </option>
                                     @endforeach
                                 </select>

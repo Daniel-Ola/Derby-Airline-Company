@@ -37,7 +37,8 @@ class FlightController extends Controller
      */
     public function create(Helper $helper)
     {
-        $lastFlight = Flight::latest()->first()->id + 1;
+        $lastFlight = Flight::latest()->first();
+        $lastFlight = is_null($lastFlight) ? 0 : $lastFlight->id + 1;
         $flightnum = 'DERFLY' . $helper->formatNumber($lastFlight);
         $activeFlights = Flight::select(['airplane_id', 'pilot_id'])->where('status', '<>', 'completed');
         $activePlanes = $activeFlights->pluck('airplane_id');

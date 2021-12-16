@@ -172,6 +172,10 @@
                                         <input id="validation-form-3" type="phone" name="phone" class="form-control" placeholder="+44 7911 123456" required>
                                     </div>
                                     <div class="input-form mt-3">
+                                        <label for="validation-form-30" class="form-label w-full flex flex-col sm:flex-row"> Email Address </label>
+                                        <input id="validation-form-30" type="email" name="email" class="form-control" placeholder="user@mail.com" required>
+                                    </div>
+                                    <div class="input-form mt-3">
                                         <label for="validation-form-3-eta" class="form-label w-full flex flex-col sm:flex-row"> Passenger Address </label>
                                         <textarea id="validation-form-3-eta" class="form-control" name="address" placeholder="Type your address" minlength="10" required></textarea>
                                     </div>

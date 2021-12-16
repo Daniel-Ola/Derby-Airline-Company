@@ -90,9 +90,13 @@
                                     </div>
                                     <div class="ml-4 mr-auto">
                                         <div class="font-medium">{{ $pilot->name . ' ' . $pilot->surname }}</div>
-                                        <div class="text-gray-600 text-xs mt-0.5">28 May 2021</div>
+                                        <div class="text-gray-600 text-xs mt-0.5">
+                                            @for($i = 1; $i <= $pilot->pilot_rating_id; $i++)
+                                                {!! '&#11088;' !!}
+                                            @endfor
+                                        </div>
                                     </div>
-                                    <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
+{{--                                    <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>--}}
                                 </div>
                             </div>
                         @empty
@@ -155,7 +159,7 @@
                                         <div class="font-medium">{{ $plane->manufacturer }}</div>
                                         <div class="text-gray-600 text-xs mt-0.5">{{ $plane->model_number }}</div>
                                     </div>
-                                    <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>
+{{--                                    <div class="py-1 px-2 rounded-full text-xs bg-theme-20 text-white cursor-pointer font-medium">137 Sales</div>--}}
                                 </div>
                             </div>
                         @empty

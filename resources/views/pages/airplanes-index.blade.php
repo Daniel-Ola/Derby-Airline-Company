@@ -20,7 +20,7 @@
                     <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-feather="search"></i>
                 </div>
                 <div class="w-full sm:w-auto flex mt-4 sm:mt-0 absolute right-0">
-                    <a href="javascript:;" data-toggle="modal" data-target="#add-item-modal" class="btn btn-primary shadow-md mr-2">New Order</a>
+                    <a href="javascript:;" data-toggle="modal" data-target="#add-item-modal" class="btn btn-primary shadow-md mr-2">Add New</a>
                 </div>
             </div>
 
@@ -88,6 +88,7 @@
                             <div class="font-medium text-base">{{ $plane->airplane_model }}</div>
                             <div class="text-gray-600">Serial Number: {{ $plane->numser }}</div>
                             <div class="text-gray-600">Capacity: {{ $plane->capacity }}</div>
+                            <div class="text-gray-600">Rating: {{ $plane->pilot_rating_id }}</div>
                         </a>
                     </div>
                 @endforeach
