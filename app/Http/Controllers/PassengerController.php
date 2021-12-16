@@ -14,7 +14,15 @@ class PassengerController extends Controller
      */
     public function index()
     {
-        return 'we are almost here';
+        return view('pages.passengers-index');
+    }
+
+    public function search($value)
+    {
+        $passenger = Passenger::where('surname', 'LIKE', '%'. $value .'%')
+            ->orWhere('name', 'LIKE', '%' . $value . '%')
+            ->get();
+        return $passenger;
     }
 
     /**
@@ -80,6 +88,13 @@ class PassengerController extends Controller
      */
     public function destroy(Passenger $passenger)
     {
-        //
+        if($passenger->delete())
+            return redirect()
+                ->route('welcome')
+                ->withMessage('Flight Cancelled Successfully');
+        else
+            return redirect()
+                ->route('welcome')
+                ->withMessage('Request Failed! Please try again or contact support');
     }
 }

@@ -21,6 +21,8 @@ use App\Http\Controllers\ {
 |
 */
 
+Route::get('/index', [DashboardController::class, 'welcome'])->name('welcome-index');
+
 Route::get('/', [DashboardController::class, 'welcome'])->name('welcome');
 
 Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
@@ -45,9 +47,15 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('airplanes', AirplaneController::class);
     Route::resource('passengers', PassengerController::class, [
-        'except' => ['show']
+        'except' => ['show', 'destroy']
     ]);//->name('staff');
+    Route::get('cancel-flight/{passenger}', [PassengerController::class, 'destroy'])->name('passengers.destroy');
+
+    Route::get('passengers/search/{value?}', [PassengerController::class, 'search'])->name('passengers.search');
 });
+
+Route::post('index/book-flight', [FlightController::class, 'bookFlight'])
+    ->name('flights.book.no-auth');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/copied.php';

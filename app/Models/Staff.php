@@ -14,7 +14,7 @@ class Staff extends Model
     protected $table = 'staffs';
 
     protected $fillable = [
-        'empnum', 'surname', 'name', 'address', 'phone', 'salary', 'staff_role_id'
+        'empnum', 'surname', 'name', 'address', 'phone', 'salary', 'staff_role_id', 'email'
     ];
 
     public function pilots()

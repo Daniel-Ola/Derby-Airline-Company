@@ -13,7 +13,18 @@ class DashboardController extends Controller
 {
     public function welcome()
     {
-        return 'welcome';
+        $flight = Flight::waiting()->get();
+        $available_flight = array_filter($flight->toArray(), [$this, 'filterFullAirplanes']);
+        return view('pages.landing', [
+            'flights' => $available_flight
+        ]);
+    }
+
+    public function filterFullAirplanes($item)
+    {
+        $passenger = Passenger::where('flightnum', $item['flightnum'])->count();
+        $airplane_capacity = Airplane::find($item['airplane_id'])->capacity;
+        return $airplane_capacity > $passenger;
     }
 
     public function index() {

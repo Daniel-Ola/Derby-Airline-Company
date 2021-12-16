@@ -1,0 +1,35 @@
+/* Theme */
+#switcher .theme-click {
+background-color: #17ad94;
+}
+
+/*Buttons*/
+
+.it-btn-primary { background-color: #17ad94;}
+.it-btn-secondary { background-color: #17ad94;}
+.it-btn-primary:hover{color: #17ad94; border: 1px solid #17ad94;}
+.it-btn-secondary:hover{color: #17ad94; border: 1px solid #17ad94;}
+.it-btn-bt{color: #17ad94;}
+.it-btn-bt:hover{ background-color: #17ad94;}
+.btn-outline{  border: 1px solid #fff; background-color: transparent;}
+h1::after{   background-color: #17ad94;}
+
+.it-clr {
+    color: #17ad94;
+}
+.navbar-scroll-custom{background: #17ad94;}
+.about-1 span {background-color: #17ad94;}
+.about-1:hover span{color: #17ad94; border: 3px solid #17ad94;}
+.features-txt h5::after{background-color: #17ad94;}
+.feature1 span{ color: #17ad94;  border: 2px solid #17ad94;}
+.feature1:hover span{ background-color: #17ad94;}
+.callout {
+    background-color: #17ad94;
+}
+.details-1 .fa{color: #17ad94;}
+
+.counters {
+    background-color: #17ad94;
+}
+.contact-details span { color: #17ad94;}
+.footer{ background-color: #17ad94;}

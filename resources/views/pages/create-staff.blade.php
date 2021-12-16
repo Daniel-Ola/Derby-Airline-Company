@@ -63,6 +63,10 @@
                                 <input id="validation-form-2" type="phone" name="phone" class="form-control" placeholder="+44 7911 123456" required>
                             </div>
                             <div class="input-form mt-3">
+                                <label for="validation-form-23" class="form-label w-full flex flex-col sm:flex-row"> Email </label>
+                                <input id="validation-form-23" type="email" name="email" class="form-control" placeholder="staff@derbyairline.com" required>
+                            </div>
+                            <div class="input-form mt-3">
                                 <label for="validation-form-3" class="form-label w-full flex flex-col sm:flex-row"> Salary </label>
                                 <input id="validation-form-3" type="number" name="salary" class="form-control" placeholder="2000" required>
                             </div>

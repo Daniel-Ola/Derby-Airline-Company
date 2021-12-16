@@ -8,7 +8,7 @@ use App\Http\Controllers\ {
 
 Route::middleware('auth')->group(function() {
     Route::get('logout', [DashboardController::class, 'logout'])->name('logout');
-    Route::get('/', [DashboardController::class, 'dashboardOverview1'])->name('dashboard-overview-1');
+//    Route::get('/', [DashboardController::class, 'dashboardOverview1'])->name('dashboard-overview-1');
     Route::get('dashboard-overview-2-page', [DashboardController::class, 'dashboardOverview2'])->name('dashboard-overview-2');
     Route::get('dashboard-overview-3-page', [DashboardController::class, 'dashboardOverview3'])->name('dashboard-overview-3');
     Route::get('inbox-page', [DashboardController::class, 'inbox'])->name('inbox');

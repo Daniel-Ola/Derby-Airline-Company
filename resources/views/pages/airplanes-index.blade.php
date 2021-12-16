@@ -33,7 +33,6 @@
                             <h2 class="font-medium text-base mr-auto">
                                 Add New Machine
                             </h2>
-{{--                            <b><small>Serial Number: {{ $airplane->numser }}</small></b>--}}
                         </div>
                         <div class="grid p-4">
                             <form action="{{ route('airplanes.store') }}" method="post">

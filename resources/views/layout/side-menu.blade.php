@@ -84,3 +84,9 @@
         <!-- END: Content -->
     </div>
 @endsection
+
+@section('script')
+
+    @stack('custom-scripts')
+
+@endsection

@@ -27,6 +27,7 @@ class StaffCreateRequest extends FormRequest
             'name' => 'required|string',
             'surname' => 'required|string',
             'phone' => 'required',
+            'email' => 'required|email',
             'salary' => 'required',
             'staff_role_id' => 'required|numeric',
             'pilot_rating_id' => 'numeric',

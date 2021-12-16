@@ -42,7 +42,7 @@ class Flight extends Model
     }
 
     public function scopeWaiting($query) {
-        return $query->whereStatus('completed');
+        return $query->whereStatus('waiting');
     }
 
     public function scopeCreated($query) {

@@ -10,6 +10,8 @@ use App\Models\Flight;
 use App\Models\Passenger;
 use App\Models\Pilot;
 use App\Models\Staff;
+use App\Mail\FlightBookingNotification;
+use Illuminate\Support\Facades\Mail;
 
 class FlightService
 {
@@ -110,6 +112,38 @@ class FlightService
             'passengers' => $passengers_on_board,
             'rem' => $rem
         ] : false;
+    }
+
+    public function sendFlightBookingMail($type, $userData)
+    {
+        if ($type == 'flight_booked')
+        {
+            $data = [
+                'subject' => 'Flight Booking Request',
+                'message' => 'Hello, you just booked a flight with Derby Airline, if you did not perform this action or would love to rather cancel your flight please use the cancel flight button below',
+                'greetings' => 'Welcome, ' . $userData['name'],
+                'cancellation_link' => route('passengers.destroy', [$userData['booking_id']])
+            ];
+            Mail::to($userData['email'])->send(new FlightBookingNotification($data));
+        }
+
+        if ($type == 'notify_crews')
+        {
+            $data = [
+                'subject' => 'New Flight alert',
+                'message' => 'Hello, you have been selected to be a part of the crew for flight ' . $userData['flightnum'] . '. Please check in with the appropriate medium for flight details and further instructions',
+                'greetings' => 'What a bright day it is to go on a flight!',
+            ];
+            Mail::to($userData['email'])->send(new FlightBookingNotification($data));
+        }
+
+        if ($type == 'cancellation')
+        {
+
+        }
+
+
+
     }
 
 

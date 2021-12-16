@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\FlightBookingException;
 use App\Models\Airplane;
 use App\Models\CrewMember;
 use App\Models\Flight;
@@ -118,7 +119,7 @@ class FlightController extends Controller
         ]);
     }
 
-    public function do_manage($flightnum, Request $request)
+    public function do_manage($flightnum, Request $request, FlightService $flightService)
     {
         if (!$flightnum) return back();
 
@@ -130,8 +131,8 @@ class FlightController extends Controller
                 return $query;
         });
 
-        $staffs = Staff::whereIn('empnum', $selected_crew_members)
-            ->get(['empnum', 'staff_role_id']);
+        $staffsRaw = Staff::whereIn('empnum', $selected_crew_members);
+        $staffs = $staffsRaw->get(['empnum', 'staff_role_id', 'email']);
         $data = [];
         foreach ($staffs as $staff) {
             $data[] = [
@@ -145,7 +146,23 @@ class FlightController extends Controller
         $save = CrewMember::upsert($data, $columns);
 
         if ($save)
+        {
+            try {
+                $emails = array_filter($staffsRaw->pluck('email')->toArray(), function ($email) {
+                    if (! is_null($email))
+                        return $email;
+                });
+                $userData = [
+                    'email' => $emails,
+                    'flightnum' => $flightnum
+                ];
+                $flightService->sendFlightBookingMail('notify_crews', $userData);
+            } catch (FlightBookingException $flightBookingException) {
+                throw $flightBookingException;
+            }
             return back()->withMessage('Successful');
+
+        }
         return back()->withMessage('Request Failed!');
 
     }
@@ -160,7 +177,20 @@ class FlightController extends Controller
         $data = $request->except('_token');
         $book = Passenger::create($data);
         if ($book)
-            return back()->withMessage('Flight Booked Successfully');
+        {
+            try {
+                $userData = [
+                    'email' => $request->email,
+                    'name' => $request->name . ' ' . $request->surname,
+                    'booking_id' => $book->id
+                ];
+                $flightService->sendFlightBookingMail('flight_booked', $userData);
+            } catch (FlightBookingException $flightBookingException)
+            {
+                return back()->withMessage('Flight Booked Successfully, notification email was interrupted. Please contact support');
+            }
+            return back()->withMessage('Flight Booked Successfully! Check your email inbox!');
+        }
         return back()->withMessage('Flight Booking Failed!');
     }
 
